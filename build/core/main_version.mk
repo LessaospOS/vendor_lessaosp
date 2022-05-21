@@ -4,22 +4,22 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)
 endif
 
-ifeq ($(USE_GAPPS),true)
+ifeq ($(LESSAOSP_GAPPS),true)
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.awaken.ziptype=Gapps
+    ro.lessaosp.ziptype=Gapps
 else
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.awaken.ziptype=Vanilla
+    ro.lessaosp.ziptype=Vanilla
 endif
 
-# AwakenOS Platform Display Version
+# LessaospOS Platform Display Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.awaken.display.version=$(AWAKEN_DISPLAY_VERSION) \
-    ro.awaken.build.version=$(AWAKEN_BUILD_VERSION) \
-    ro.awaken.build.date=$(BUILD_DATE) \
-    ro.awaken.buildtype=$(AWAKEN_BUILD_TYPE) \
-    ro.awaken.fingerprint=$(ROM_FINGERPRINT) \
-    ro.awaken.version=$(AWAKEN_VERSION) \
-    ro.awaken.base.codename=$(AWAKEN_CODENAME) \
-    ro.awaken.base.version=$(AWAKEN_NUM_VER) \
-    ro.modversion=$(AWAKEN_VERSION)
+    ro.lessaosp.display.version=$(LESSAOSP_DISPLAY_VERSION) \
+    ro.lessaosp.build.version=$(LESSAOSP_BUILD_VERSION) \
+    ro.lessaosp.build.date=$(BUILD_DATE) \
+    ro.lessaosp.buildtype=$(LESSAOSP_BUILD_TYPE) \
+    ro.lessaosp.fingerprint=$(ROM_FINGERPRINT) \
+    ro.lessaosp.version=$(LESSAOSP_VERSION) \
+    ro.lessaosp.base.codename=$(LESSAOSP_CODENAME) \
+    ro.lessaosp.base.version=$(LESSAOSP_NUM_VER) \
+    ro.modversion=$(LESSAOSP_VERSION)

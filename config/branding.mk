@@ -1,6 +1,7 @@
 # Copyright (C) 2016-2017 AOSiP
 # Copyright (C) 2020 Fluid
 # Copyright (C) 2021 AwakenOS
+# Copyright (C) 2021 LessaospOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,32 +16,32 @@
 # limitations under the License.
 
 # Versioning System
-AWAKEN_CODENAME := Glacier
-AWAKEN_NUM_VER := 2.7
+LESSAOSP_CODENAME := SnowWhite
+LESSAOSP_NUM_VER := 2.0
 
-TARGET_PRODUCT_SHORT := $(subst awaken_,,$(AWAKEN_BUILD_TYPE))
+TARGET_PRODUCT_SHORT := $(subst lessaosp_,,$(LESSAOSP_BUILD_TYPE))
 
-AWAKEN_BUILD_TYPE ?= UNOFFICIAL
+LESSAOSP_BUILD_TYPE ?= UNOFFICIAL
 
 # Only include Updater for official  build
-ifeq ($(filter-out OFFICIAL,$(AWAKEN_BUILD_TYPE)),)
+ifeq ($(filter-out OFFICIAL,$(LESSAOSP_BUILD_TYPE)),)
     PRODUCT_PACKAGES += \
         Updater
 endif
 
 # Sign builds if building an official build
-ifeq ($(filter-out OFFICIAL,$(AWAKEN_BUILD_TYPE)),)
+ifeq ($(filter-out OFFICIAL,$(LESSAOSP_BUILD_TYPE)),)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := $(KEYS_LOCATION)
 endif
 
 # Set all versions
 BUILD_DATE := $(shell date -u +%Y%m%d)
 BUILD_TIME := $(shell date -u +%H%M)
-AWAKEN_BUILD_VERSION := $(AWAKEN_NUM_VER)-$(AWAKEN_CODENAME)
-AWAKEN_VERSION := $(AWAKEN_BUILD_VERSION)-$(AWAKEN_BUILD)-$(AWAKEN_BUILD_TYPE)-Vanilla-$(BUILD_TIME)-$(BUILD_DATE)
-ifeq ($(USE_GAPPS), true)
-AWAKEN_VERSION := $(AWAKEN_BUILD_VERSION)-$(AWAKEN_BUILD)-$(AWAKEN_BUILD_TYPE)-Gapps-$(BUILD_TIME)-$(BUILD_DATE)
+LESSAOSP_BUILD_VERSION := $(LESSAOSP_NUM_VER)-$(LESSAOSP_CODENAME)
+LESSAOSP_VERSION := $(LESSAOSP_BUILD_VERSION)-$(LESSAOSP_BUILD)-$(LESSAOSP_BUILD_TYPE)-Vanilla-$(BUILD_TIME)-$(BUILD_DATE)
+ifeq ($(LESSAOSP_GAPPS), true)
+LESSAOSP_VERSION := $(LESSAOSP_BUILD_VERSION)-$(LESSAOSP_BUILD)-$(LESSAOSP_BUILD_TYPE)-Gapps-$(BUILD_TIME)-$(BUILD_DATE)
 endif
-ROM_FINGERPRINT := Awaken/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(BUILD_TIME)
-AWAKEN_DISPLAY_VERSION := $(AWAKEN_VERSION)
-RELEASE_TYPE := $(AWAKEN_BUILD_TYPE)
+ROM_FINGERPRINT := Lessaosp/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(BUILD_TIME)
+LESSAOSP_DISPLAY_VERSION := $(LESSAOSP_VERSION)
+RELEASE_TYPE := $(LESSAOSP_BUILD_TYPE)

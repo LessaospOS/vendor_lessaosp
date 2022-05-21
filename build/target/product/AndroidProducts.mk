@@ -15,7 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/awaken_arm64.mk
+    $(LOCAL_DIR)/lessaosp_arm64.mk
 
 COMMON_LUNCH_CHOICES := \
-    awaken_arm64-userdebug
+    lessaosp_arm64-userdebug

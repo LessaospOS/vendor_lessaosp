@@ -1,7 +1,7 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
-PRODUCT_BRAND ?= AwakenOS
+PRODUCT_BRAND ?= LessaospOS
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -26,18 +26,18 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/awaken/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/awaken/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/awaken/prebuilt/common/bin/50-lineage.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-lineage.sh
+    vendor/lessaosp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/lessaosp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/lessaosp/prebuilt/common/bin/50-lineage.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-lineage.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/addon.d/50-lineage.sh
 
 ifneq ($(strip $(AB_OTA_PARTITIONS) $(AB_OTA_POSTINSTALL_CONFIG)),)
 PRODUCT_COPY_FILES += \
-    vendor/awaken/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/awaken/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/awaken/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/lessaosp/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/lessaosp/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/lessaosp/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
     system/bin/backuptool_ab.sh \
@@ -51,13 +51,13 @@ endif
 endif
 
 # Branding
-include vendor/awaken/config/branding.mk
+include vendor/lessaosp/config/branding.mk
 
 # Lineage-specific init rc file
 PRODUCT_COPY_FILES += \
-    vendor/awaken/prebuilt/common/etc/init/init.lineage-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-system_ext.rc \
-    vendor/awaken/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc \
-    vendor/awaken/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
+    vendor/lessaosp/prebuilt/common/etc/init/init.lineage-system_ext.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-system_ext.rc \
+    vendor/lessaosp/prebuilt/common/etc/init/init.lineage-updater.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init.lineage-updater.rc \
+    vendor/lessaosp/prebuilt/common/etc/init/init.openssh.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/init.openssh.rc
 
 # Disable blur on app-launch
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
@@ -69,7 +69,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Enable Android Beam on all targets
 PRODUCT_COPY_FILES += \
-    vendor/awaken/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.nfc.beam.xml
+    vendor/lessaosp/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.software.nfc.beam.xml
 
 # Enable one-handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -107,14 +107,14 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Fonts
-include vendor/awaken/config/fonts.mk
+include vendor/lessaosp/config/fonts.mk
 
 # Game Overlay
 PRODUCT_COPY_FILES += \
-    vendor/awaken/prebuilt/common/etc/sysconfig/game_overlay.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/game_overlay.xml
+    vendor/lessaosp/prebuilt/common/etc/sysconfig/game_overlay.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/game_overlay.xml
 
 # Gapps
-ifeq ($(USE_GAPPS),true)
+ifeq ($(LESSAOSP_GAPPS),true)
 $(call inherit-product-if-exists, vendor/gms/products/gms.mk)
 endif
 
@@ -126,13 +126,13 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_land_r=64
 
 # Include AOSP audio files
-include vendor/awaken/config/aosp_audio.mk
+include vendor/lessaosp/config/aosp_audio.mk
 
-# Include Awaken audio files
-include vendor/awaken/config/awaken_audio.mk
+# Include Lessaosp audio files
+include vendor/lessaosp/config/lessaosp_audio.mk
 
 # Include extra packages
-include vendor/awaken/config/packages.mk
+include vendor/lessaosp/config/packages.mk
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -146,7 +146,7 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 # Bootanimation
-$(call inherit-product, vendor/awaken/config/bootanimation.mk)
+$(call inherit-product, vendor/lessaosp/config/bootanimation.mk)
 
 # Charger
 ifeq ($(USE_PIXEL_CHARGER),true)
@@ -161,7 +161,7 @@ PRODUCT_PACKAGES += \
 # Quick Tap
 ifeq ($(TARGET_SUPPORTS_QUICK_TAP),true)
 PRODUCT_COPY_FILES += \
-    vendor/awaken/prebuilt/common/etc/sysconfig/quick_tap.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/quick_tap.xml
+    vendor/lessaosp/prebuilt/common/etc/sysconfig/quick_tap.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/quick_tap.xml
 endif
 
 # Storage manager
@@ -193,10 +193,10 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
 # Inherit from rro_overlays config
-$(call inherit-product, vendor/awaken/config/rro_overlays.mk)
+$(call inherit-product, vendor/lessaosp/config/rro_overlays.mk)
 
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/awaken/overlay
-PRODUCT_PACKAGE_OVERLAYS += vendor/awaken/overlay/common
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lessaosp/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/lessaosp/overlay/common
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/awaken/config/partner_gms.mk
+-include vendor/lessaosp/config/partner_gms.mk

@@ -164,7 +164,7 @@ else
         $(error "NO KERNEL CONFIG")
     else
         ifneq ($(TARGET_FORCE_PREBUILT_KERNEL),)
-            ifneq ($(filter OFFICIAL,$(AWAKEN_BUILDTYPE)),)
+            ifneq ($(filter OFFICIAL,$(LESSAOSP_BUILDTYPE)),)
                 $(error "PREBUILT KERNEL IS NOT ALLOWED ON OFFICIAL BUILDS!")
             else
                 $(warning **********************************************************)

@@ -4,6 +4,7 @@
 # Copyright (C) 2018, Resurrection Remix
 # Copyright (C) 2020-2021, Project Awaken
 # Copyright (C) 2019-2021, WaveOS
+# Copyright (C) 2021-2022, LessaospOS
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,14 +30,14 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-custom_local_manifest = ".repo/local_manifests/awaken.xml"
+custom_local_manifest = ".repo/local_manifests/lessaosp.xml"
 custom_default_revision = "12"
-custom_dependencies = "awaken.dependencies"
-org_manifest = "awaken"  # leave empty if org is provided in manifest
-org_display = "Project-Awaken"  # needed for displaying
+custom_dependencies = "lessaosp.dependencies"
+org_manifest = "lessaosp"  # leave empty if org is provided in manifest
+org_display = "Project-Lessaosp"  # needed for displaying
 
 default_manifest = ".repo/manifests/default.xml"
-awaken_manifest = ".repo/manifests/awaken.xml"
+lessaosp_manifest = ".repo/manifests/lessaosp.xml"
 lineage_manifest = ".repo/manifests/lineage.xml"
 
 github_token = None
@@ -138,7 +139,7 @@ def is_in_manifest(project_path):
 def add_to_manifest(repos, fallback_branch=None):
     lm = load_manifest(custom_local_manifest)
     mlm = load_manifest(default_manifest)
-    awakenm = load_manifest(awaken_manifest)
+    lessaospm = load_manifest(lessaosp_manifest)
     lineagem = load_manifest(lineage_manifest)
 
     for repo in repos:
@@ -170,8 +171,8 @@ def add_to_manifest(repos, fallback_branch=None):
             continue
 
         existing_m_project = None
-        if exists_in_tree(awakenm, repo_path) != None:
-            existing_m_project = exists_in_tree(awakenm, repo_path)
+        if exists_in_tree(lessaospm, repo_path) != None:
+            existing_m_project = exists_in_tree(lessaospm, repo_path)
         elif exists_in_tree(lineagem, repo_path) != None:
             existing_m_project = exists_in_tree(lineagem, repo_path)
         elif exists_in_tree(mlm, repo_path) != None:

@@ -1,2 +1,2 @@
-# Include AwakenOS versions
-include $(TOPDIR)vendor/awaken/build/core/main_version.mk
+# Include LessaospOS versions
+include $(TOPDIR)vendor/lessaosp/build/core/main_version.mk

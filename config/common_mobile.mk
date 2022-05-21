@@ -1,7 +1,7 @@
 # Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/awaken/config/common.mk)
+$(call inherit-product, vendor/lessaosp/config/common.mk)
 
-ifneq ($(USE_GAPPS),true)
+ifneq ($(LESSAOSP_GAPPS),true)
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.notification_sound=Argon.ogg \

@@ -1,10 +1,10 @@
-# Awaken packages
+# Lessaosp packages
 PRODUCT_PACKAGES += \
     ThemePicker \
     TouchGestures \
     RepainterServicePriv
 
-ifneq ($(USE_GAPPS),true)
+ifneq ($(LESSAOSP_GAPPS),true)
 PRODUCT_PACKAGES += \
     Apps \
     Backgrounds \
@@ -16,7 +16,7 @@ PRODUCT_PACKAGES += \
     Seedvault
 endif
 
-# Extra tools in Awaken
+# Extra tools in Lessaosp
 PRODUCT_PACKAGES += \
     7z \
     awk \
